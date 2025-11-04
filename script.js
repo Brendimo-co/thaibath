@@ -36,32 +36,21 @@ Gifts configuration
 =========================== */
 
 const GIFTS = [
-  { id: 'A1', name: 'Ödənişsiz Seç', tier: 'A', weight: 0.000 },
-  { id: 'B1', name: '15 AZN Endirim', tier: 'B', weight: 0.000 },
-  { id: 'B2', name: 'La Coste Qolbaq', tier: 'B', weight: 0.495 },
-  { id: 'F1', name: 'Qazanmadınız', tier: 'F', weight: 13.995 },
-  { id: 'B3', name: 'La Coste Parfüm', tier: 'B', weight: 0.495 },
-  { id: 'B4', name: 'Qalstuk Dəsti', tier: 'B', weight: 0.000 },
-  { id: 'B5', name: 'Armani Parfüm', tier: 'B', weight: 0.495 },
-  { id: 'F2', name: 'Qazanmadınız', tier: 'F', weight: 17.495 },
-  { id: 'B6', name: 'Hermes Qalstuk', tier: 'B', weight: 0.495 },
-  { id: 'B7', name: 'Premium Kəmər', tier: 'B', weight: 0.000 },
-  { id: 'B8', name: 'Premium Kaşelok', tier: 'B', weight: 0.000 },
-  { id: 'F3', name: 'Qazanmadınız', tier: 'F', weight: 13 },
-  { id: 'B9', name: '3 AZN Endirim', tier: 'B', weight: 0.000 },
-  { id: 'B10', name: 'Qələm', tier: 'B', weight: 0.495 },
-  { id: 'C1', name: '5 AZN Endirim', tier: 'C', weight: 1 },
-  { id: 'F4', name: 'Qazanmadınız', tier: 'F', weight: 20 },
-  { id: 'C2', name: 'Kaşelok', tier: 'C', weight: 1 },
-  { id: 'C3', name: 'Kəmər', tier: 'C', weight: 1 },
-  { id: 'C4', name: 'Qolbaq', tier: 'C', weight: 1 },
-  { id: 'F5', name: 'Qazanmadınız', tier: 'F', weight: 19 },
-  { id: 'C5', name: 'Saat', tier: 'C', weight: 1 },
-  { id: 'D1', name: '2 - 10', tier: 'D', weight: 0.25 },
-  { id: 'D2', name: 'Indi 10', tier: 'D', weight: 0.25 },
-  { id: 'F6', name: 'Qazanmadınız', tier: 'F', weight: 1.99 },
-  { id: 'D3', name: 'Dostunla 5', tier: 'D', weight: 6.25 },
-  { id: 'D4', name: 'Paylaş 5', tier: 'D', weight: 0.25 }
+  { id: 'A1', name: 'Ödənişsiz', tier: 'A', weight: 0.000 },
+  { id: 'B1', name: '9 AZN', tier: 'B', weight: 0.000 },
+  { id: 'B2', name: '54 AZN', tier: 'B', weight: 20 },
+  { id: 'B3', name: '69 AZN', tier: 'B', weight: 20 },
+  { id: 'B4', name: '99 AZN', tier: 'B', weight: 0 },
+  { id: 'B5', name: '49 AZN', tier: 'B', weight: 0 },
+  { id: 'C1', name: '57 AZN', tier: 'C', weight: 20 },
+  { id: 'C2', name: '125 AZN', tier: 'C', weight: 0 },
+  { id: 'C3', name: '77 AZN', tier: 'C', weight: 20 },
+  { id: 'C4', name: '35 AZN', tier: 'C', weight: 0 },
+  { id: 'C5', name: '80 AZN', tier: 'C', weight: 0 },
+  { id: 'D1', name: '1 AZN', tier: 'D', weight: 0 },
+  { id: 'D2', name: '75 AZN', tier: 'D', weight: 0 },
+  { id: 'D3', name: '59 AZN', tier: 'D', weight: 20 },
+  { id: 'D4', name: '89 AZN', tier: 'D', weight: 0 }
 ];
 
 /* ===========================
@@ -399,11 +388,11 @@ spinBtn.addEventListener('click', async function() {
 
   let selected;
   if (nextSpinToday === 1) {
-    selected = GIFTS.find(g => g.tier === 'F' && /Qazanmad/i.test(g.name)) || { id: 'F_custom', name: 'Qazanmadınız', tier: 'F', weight: 0 };
+    selected = GIFTS.find(g => g.tier === 'F' && /Qazanmad/i.test(g.name)) || { id: 'F_custom', name: ' ', tier: 'F', weight: 0 };
   } else if (nextSpinToday === 2) {
-    selected = GIFTS.find(g => g.name && /3\s*AZN|3 AZN/i.test(g.name)) || { id: 'B_3azn', name: '3 AZN Endirim', tier: 'B', weight: 0 };
+    selected = GIFTS.find(g => g.name && /3\s*AZN|3 AZN/i.test(g.name)) || { id: 'B_3azn', name: ' ', tier: 'B', weight: 0 };
   } else if (nextSpinToday === 3) {
-    const choices = ['5 AZN Endirim', 'Kaşelok', 'Kəmər', 'Qolbaq', 'Saat'];
+    const choices = ['54 AZN', '57 AZN', '59 AZN', '77 AZN', '69 AZN'];
     const choiceName = choices[Math.floor(Math.random() * choices.length)];
     selected = GIFTS.find(g => g.name === choiceName) || { id: 'C3_special_' + choiceName.replace(/\s+/g,'_'), name: choiceName, tier: 'C', weight: 0 };
   } else {
@@ -498,7 +487,7 @@ function showResultModalWithSpinNumber(selected, resp, spinNumberToday) {
     let instr = '';
 
     if (spinNumberToday === 1) {
-      instr = 'Təəssüf ki, qazanmadınız!. Sənin üçün bir şans daha veririk. Şansını yenidən yoxla! ';
+      instr = 'Sənin üçün bir şans daha veririk. Şansını yenidən yoxla! ';
       const retryBtn = document.createElement('button');
       retryBtn.className = 'btn primary';
       retryBtn.innerText = 'Yenidən çevir';
@@ -508,7 +497,7 @@ function showResultModalWithSpinNumber(selected, resp, spinNumberToday) {
       });
       modalActions.appendChild(retryBtn);
     } else if (spinNumberToday === 2) {
-      instr = '3 AZN Endirim Qazandın!. Əgər istərsən 3 AZN endirimi götürə və ya yenidən çevirə bilərsən!.';
+      instr = '3 AZN Endirim Qazandın!. Əgər istərsən son bir dəfə də çevirə bilərsən!.';
       const takeBtn = document.createElement('button');
       takeBtn.className = 'btn';
       takeBtn.innerText = '3 AZN götür';
