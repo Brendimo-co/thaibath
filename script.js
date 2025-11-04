@@ -9,7 +9,7 @@
 CONFIG
 =========================== */
 
-const API_ENDPOINT = "https://script.google.com/macros/s/AKfycbzwgkr3AN5u0nAelm-0qJZxrFvFRgj2cZtIbUpMl7Q7BzKdHvjkporVg6-Cs0PyKB8vHA/exec";
+const API_ENDPOINT = "https://script.google.com/macros/s/AKfycbxS1kbNZNLtpqLPag6q8zIyfgdyodjc3_V5N1u_BTUm8nBOdl-KprNWTHNSBZpx28pn3w/exec";
 
 /* ===========================
 DOM refs
@@ -388,9 +388,9 @@ spinBtn.addEventListener('click', async function() {
 
   let selected;
   if (nextSpinToday === 1) {
-    selected = GIFTS.find(g => g.tier === 'F' && /Qazanmad/i.test(g.name)) || { id: 'F_custom', name: ' ', tier: 'F', weight: 0 };
+    selected = GIFTS.find(g => g.tier === 'F' && /Qazanmad/i.test(g.name)) || { id: 'F_custom', name: ' 99 AZN ', tier: 'F', weight: 0 };
   } else if (nextSpinToday === 2) {
-    selected = GIFTS.find(g => g.name && /3\s*AZN|3 AZN/i.test(g.name)) || { id: 'B_3azn', name: ' ', tier: 'B', weight: 0 };
+    selected = GIFTS.find(g => g.name && /3\s*AZN|3 AZN/i.test(g.name)) || { id: 'B_3azn', name: ' 80 AZN ', tier: 'B', weight: 0 };
   } else if (nextSpinToday === 3) {
     const choices = ['54 AZN', '57 AZN', '59 AZN', '77 AZN', '69 AZN'];
     const choiceName = choices[Math.floor(Math.random() * choices.length)];
@@ -497,10 +497,10 @@ function showResultModalWithSpinNumber(selected, resp, spinNumberToday) {
       });
       modalActions.appendChild(retryBtn);
     } else if (spinNumberToday === 2) {
-      instr = '3 AZN Endirim Qazandın!. Əgər istərsən son bir dəfə də çevirə bilərsən!.';
+      instr = 'Əgər istərsən son bir dəfə də çevirə bilərsən!.';
       const takeBtn = document.createElement('button');
       takeBtn.className = 'btn';
-      takeBtn.innerText = '3 AZN götür';
+      takeBtn.innerText = 'Razıyam';
       takeBtn.addEventListener('click', () => {
         try {
           const sessRaw = sessionStorage.getItem('brendimo_current');
@@ -512,7 +512,7 @@ function showResultModalWithSpinNumber(selected, resp, spinNumberToday) {
             saveState(sess.phone, st);
           }
         } catch (e) { console.warn(e); }
-        alert('3 AZN endiriminiz qeydə alındı. Sifariş üçün DM vasitəsilə əlaqə saxlayın.');
+        alert('Sifariş üçün DM vasitəsilə əlaqə saxlayın.');
         closeResultModal();
       });
       const retryBtn = document.createElement('button');
@@ -525,7 +525,7 @@ function showResultModalWithSpinNumber(selected, resp, spinNumberToday) {
       modalActions.appendChild(takeBtn);
       modalActions.appendChild(retryBtn);
     } else if (spinNumberToday === 3) {
-      instr = 'Təbrik edirik! ' + selected.name + ' qazandın. 30 dəqiqə ərzində sifarişi tamamla, hədiyyən 2x (iki qat) olsun.';
+      instr = 'Son Qiymət ' + selected.name + ' seçildi. 30 dəqiqə ərzində sifarişi tamamla, 5 AZN endirim qazan və çatdırılman ödənişsiz olsun.';
       const okBtn = document.createElement('button');
       okBtn.className = 'btn primary';
       okBtn.innerText = 'Bitir';
